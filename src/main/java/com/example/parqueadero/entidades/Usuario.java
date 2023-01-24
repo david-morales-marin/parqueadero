@@ -1,30 +1,52 @@
 package com.example.parqueadero.entidades;
 
-public class Usuario {
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+
+@Table(name = "Usuario")
+public class Usuario implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "NOMBRE")
     private String nombre;
 
+    @Column(name = "APELLIDO" )
     private String apellido;
 
+    @Column(name = "CEDULA")
     private Integer cedula;
 
+    @Column(name = "CORREO" )
     private String correo;
 
+    @Column(name = "CELULAR" )
     private String celular;
+
+    @Column(name = "FACTURA_ID")
+    @OneToOne
+    private Factura facturaid;
+
+    @Column(name = "CARRO_ID")
+    @OneToOne
+    private Carro carroid;
 
     public Usuario() {
 
     }
 
-    public Usuario(Integer id, String nombre, String apellido, Integer cedula, String correo, String celular) {
+    public Usuario(Integer id, String nombre, String apellido, Integer cedula, String correo, String celular, Factura facturaid, Carro carroid) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.correo = correo;
         this.celular = celular;
+        this.facturaid = facturaid;
+        this.carroid = carroid;
     }
 
     public Integer getId() {
@@ -73,5 +95,21 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public Factura getFacturaid() {
+        return facturaid;
+    }
+
+    public void setFacturaid(Factura facturaid) {
+        this.facturaid = facturaid;
+    }
+
+    public Carro getCarroid() {
+        return carroid;
+    }
+
+    public void setCarroid(Carro carroid) {
+        this.carroid = carroid;
     }
 }

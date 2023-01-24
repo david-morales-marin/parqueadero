@@ -13,7 +13,6 @@ public class Carro implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    //@Column(name = "Tipo_Carro")
     private enum tipoCarro{ escolar , privado , alimentos, moto, publico};
     @Column(name = "placa")
     private Integer placa;
@@ -25,9 +24,11 @@ public class Carro implements Serializable {
     private String ciudadCarro;
 
     @Column(name = "usuario_id")
+    @OneToOne
     private Usuario usuarioid;
 
     @Column(name = "factura_id")
+    @OneToOne
     private Factura facturaid;
 
     public Carro() {

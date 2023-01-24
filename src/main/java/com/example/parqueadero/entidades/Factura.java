@@ -1,19 +1,34 @@
 package com.example.parqueadero.entidades;
 
-public class Factura {
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+
+@Table(name = "Facturas")
+public class Factura implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "numero_Factura")
     private Integer numeroFactura;
 
+    @Column(name = "Hora_parqueadero")
     private double horaParqueo;
 
+    @Column(name = "Total_Pagar")
     private double totalPagar;
 
+    @Column(name = "Descuento")
     private double descuento;
 
+    @Column(name = " Usuario_id")
+    @OneToOne
     private Usuario usuarioid;
 
+    @Column(name = "Carro_id")
+    @OneToOne
     private Carro carroid;
 
     public Factura() {
