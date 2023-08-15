@@ -1,7 +1,7 @@
-package com.example.parqueadero.servicios;
+package com.example.parqueadero.services;
 
-import com.example.parqueadero.entidades.Factura;
-import com.example.parqueadero.repositorios.FacturaRepository;
+import com.example.parqueadero.entitys.Factura;
+import com.example.parqueadero.repositorys.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,19 +1,17 @@
-package com.example.parqueadero.controladores;
+package com.example.parqueadero.controller;
 
-import com.example.parqueadero.entidades.Carro;
-import com.example.parqueadero.entidades.Factura;
-import com.example.parqueadero.entidades.Usuario;
-import com.example.parqueadero.servicios.CarroServices;
-import com.example.parqueadero.servicios.FacturaServices;
-import com.example.parqueadero.servicios.UsuarioServices;
+import com.example.parqueadero.entitys.Carro;
+import com.example.parqueadero.entitys.Factura;
+import com.example.parqueadero.entitys.Usuario;
+import com.example.parqueadero.services.CarroServices;
+import com.example.parqueadero.services.FacturaServices;
+import com.example.parqueadero.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 @RestController
 @RequestMapping("/carro")
 public class CarroControlador {

@@ -1,6 +1,6 @@
-package com.example.parqueadero.repositorios;
+package com.example.parqueadero.repositorys;
 
-import com.example.parqueadero.entidades.Factura;
+import com.example.parqueadero.entitys.Factura;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

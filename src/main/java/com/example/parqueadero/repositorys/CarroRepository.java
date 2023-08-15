@@ -1,7 +1,6 @@
-package com.example.parqueadero.repositorios;
+package com.example.parqueadero.repositorys;
 
-import com.example.parqueadero.entidades.Carro;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import com.example.parqueadero.entitys.Carro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

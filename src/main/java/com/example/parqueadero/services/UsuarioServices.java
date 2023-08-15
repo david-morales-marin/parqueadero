@@ -1,7 +1,7 @@
-package com.example.parqueadero.servicios;
+package com.example.parqueadero.services;
 
-import com.example.parqueadero.entidades.Usuario;
-import com.example.parqueadero.repositorios.UsuarioRepository;
+import com.example.parqueadero.entitys.Usuario;
+import com.example.parqueadero.repositorys.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +22,22 @@ public class UsuarioServices {
         return this.usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> obtenerUsuarioXId(int id){
-        return this.usuarioRepository.findById(id);
-    }
+    public Optional<Usuario> obtenerUsuarioXCedula(int cedula) {
 
-    public Usuario crearUsuario(Usuario nuevoUsuario){
-        return this.usuarioRepository.save(nuevoUsuario);
+
+            return this.usuarioRepository.findByCedula(cedula);
     }
-    public void eliminarUsuario(int id){
-        this.usuarioRepository.deleteById(id);
+    public Usuario crearUsuario(Usuario nuevoUsuario){
+            return this.usuarioRepository.save(nuevoUsuario);
+
+    }
+    public void eliminarUsuario(int id) {
+
+        try {
+            this.usuarioRepository.deleteById(id);
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
     }
 
     public Usuario editarUsuario(Usuario usuario, int id){

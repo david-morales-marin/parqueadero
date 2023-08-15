@@ -1,4 +1,4 @@
-package com.example.parqueadero.entidades;
+package com.example.parqueadero.entitys;
 
 import jakarta.persistence.*;
 

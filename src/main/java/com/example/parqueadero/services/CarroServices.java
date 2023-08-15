@@ -1,7 +1,7 @@
-package com.example.parqueadero.servicios;
+package com.example.parqueadero.services;
 
-import com.example.parqueadero.entidades.Carro;
-import com.example.parqueadero.repositorios.CarroRepository;
+import com.example.parqueadero.entitys.Carro;
+import com.example.parqueadero.repositorys.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

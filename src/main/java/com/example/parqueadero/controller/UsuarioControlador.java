@@ -1,19 +1,17 @@
-package com.example.parqueadero.controladores;
+package com.example.parqueadero.controller;
 
-import com.example.parqueadero.entidades.Carro;
-import com.example.parqueadero.entidades.Factura;
-import com.example.parqueadero.entidades.Usuario;
-import com.example.parqueadero.servicios.CarroServices;
-import com.example.parqueadero.servicios.FacturaServices;
-import com.example.parqueadero.servicios.UsuarioServices;
+import com.example.parqueadero.entitys.Carro;
+import com.example.parqueadero.entitys.Factura;
+import com.example.parqueadero.entitys.Usuario;
+import com.example.parqueadero.services.CarroServices;
+import com.example.parqueadero.services.FacturaServices;
+import com.example.parqueadero.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -36,9 +34,12 @@ public class UsuarioControlador {
         return this.usuarioServices.obtenerUsuarios();
     }
 
-    @GetMapping("/usuario/{id}")
-    public Optional<Usuario> obtenerUnUsuario(@PathVariable ("id") int id){
-        return this.usuarioServices.obtenerUsuarioXId(id);
+    @GetMapping("/usuario/{cedula}")
+    public Optional<Usuario> obtenerUnUsuario(@PathVariable ("cedula") int cedula){
+        return this.usuarioServices.obtenerUsuarioXCedula(cedula)
+                .stream()
+                .filter(p -> p.getCedula().equals(cedula))
+                .findFirst();
     }
 
     @PostMapping("/crearUsuario")
