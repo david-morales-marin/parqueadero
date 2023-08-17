@@ -22,7 +22,7 @@ public class CarroServices {
         return this.carroRepository.findAll();
     }
 
-    public Optional<Carro> obtenerCarroXId(int id){
+    public Optional<Carro> obtenerCarroXId(long id){
         return this.carroRepository.findById(id);
     }
 
@@ -30,11 +30,11 @@ public class CarroServices {
         return this.carroRepository.save(nuevoCarro);
     }
 
-    public void eliminarCarro(int id){
+    public void eliminarCarro(long id){
         this.carroRepository.deleteById(id);
     }
 
-    public Carro editarRegistroCarro(Carro carro, int id){
+    public Carro editarRegistroCarro(Carro carro, long id){
         Carro carro1 = carroRepository.findById(id).get();
 
         if(Objects.nonNull(
@@ -51,14 +51,14 @@ public class CarroServices {
                 carro1.setCiudadCarro(
                         carro.getCiudadCarro());
             }
-        if (Objects.nonNull(
+      /*  if (Objects.nonNull(
                 carro.getFacturaid())
                 && !"".equalsIgnoreCase(
                 carro.getFacturaid().toString())
         ) {
             carro1.setFacturaid(
                     carro.getFacturaid());
-        }
+        }*/
         if (Objects.nonNull(
                 carro.getPlaca())
             && !"".equalsIgnoreCase(
@@ -66,13 +66,13 @@ public class CarroServices {
             carro1.setPlaca(
                     carro.getPlaca());
         }
-        if (Objects.nonNull(
+     /*   if (Objects.nonNull(
                 carro.getUsuarioid())
                 && !"".equalsIgnoreCase(
                         carro.getUsuarioid().toString())){
                     carro1.setUsuarioid(
                             carro.getUsuarioid());
-        }
+        }*/
         return  this.carroRepository.save(carro1);
     }
 

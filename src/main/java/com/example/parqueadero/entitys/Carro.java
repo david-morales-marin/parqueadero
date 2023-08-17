@@ -1,17 +1,16 @@
 package com.example.parqueadero.entitys;
 
-import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+ @Entity
 @Table(name = "Carro")
 public class Carro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     private enum tipoCarro{ escolar , privado , alimentos, moto, publico};
     @Column(name = "placa")
@@ -23,31 +22,31 @@ public class Carro implements Serializable {
     @Column(name = "ciudad_carro")
     private String ciudadCarro;
 
-    @Column(name = "usuario_id")
-    @OneToOne
-    private Usuario usuarioid;
+   // @Column(name = "usuario_id")
+   // @OneToOne
+    //  private Usuario usuarioid;
 
-    @Column(name = "factura_id")
-    @OneToOne
-    private Factura facturaid;
+  //  @Column(name = "factura_id")
+   // @OneToOne
+    //   private Factura facturaid;
 
     public Carro() {
     }
 
-    public Carro(Integer id, Integer placa, Long matricula, String ciudadCarro, Usuario usuarioid, Factura facturaid) {
+    public Carro(Long id, Integer placa, Long matricula, String ciudadCarro) {
         this.id = id;
         this.placa = placa;
         this.matricula = matricula;
         this.ciudadCarro = ciudadCarro;
-        this.usuarioid = usuarioid;
-        this.facturaid = facturaid;
+        //   this.usuarioid = usuarioid;
+        //   this.facturaid = facturaid;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,19 +74,19 @@ public class Carro implements Serializable {
         this.ciudadCarro = ciudadCarro;
     }
 
-    public Usuario getUsuarioid() {
-        return usuarioid;
-    }
+    //  public Usuario getUsuarioid() {
+    //    return usuarioid;
+    //  }
 
-    public void setUsuarioid(Usuario usuarioid) {
-        this.usuarioid = usuarioid;
-    }
+    // public void setUsuarioid(Usuario usuarioid) {
+    //     this.usuarioid = usuarioid;
+    //   }
 
-    public Factura getFacturaid() {
-        return facturaid;
-    }
+    //  public Factura getFacturaid() {
+    //   return facturaid;
+    //  }
 
-    public void setFacturaid(Factura facturaid) {
-        this.facturaid = facturaid;
-    }
+    //  public void setFacturaid(Factura facturaid) {
+    //   this.facturaid = facturaid;
+    //  }
 }

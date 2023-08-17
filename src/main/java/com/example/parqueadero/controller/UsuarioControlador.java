@@ -16,14 +16,14 @@ import java.util.Optional;
 @RequestMapping("/usuario")
 public class UsuarioControlador {
 
-    @Autowired
-    public UsuarioServices usuarioServices;
+      @Autowired
+      public UsuarioServices usuarioServices;
 
-    @Autowired
-    public FacturaServices facturaServices;
+    //     @Autowired
+       // public FacturaServices facturaServices;
 
-    @Autowired
-    public CarroServices carroServices;
+    //  @Autowired
+    //  public CarroServices carroServices;
 
     public UsuarioControlador(UsuarioServices usuarioServices) {
         this.usuarioServices = usuarioServices;
@@ -34,18 +34,18 @@ public class UsuarioControlador {
         return this.usuarioServices.obtenerUsuarios();
     }
 
-    @GetMapping("/usuario/{cedula}")
-    public Optional<Usuario> obtenerUnUsuario(@PathVariable ("cedula") int cedula){
-        return this.usuarioServices.obtenerUsuarioXCedula(cedula)
-                .stream()
+    @GetMapping("/usuario123/{cedula}")
+    public int obtenerUnUsuario(@PathVariable ("cedula") int cedula){
+        return this.usuarioServices.obtenerUsuarioXCedula(cedula);
+             /*   .stream()
                 .filter(p -> p.getCedula().equals(cedula))
-                .findFirst();
+                .findFirst(); */
     }
 
     @PostMapping("/crearUsuario")
     public Usuario crearUsuario(@RequestBody Usuario usuario){
-        this.carroServices.crearRegistroCarro(usuario.getCarroid());
-        this.facturaServices.crearFactura(usuario.getFacturaid());
+        //  this.carroServices.crearRegistroCarro(usuario.getCarroid());
+        //  this.facturaServices.crearFactura(usuario.getFacturaid());
         return this.usuarioServices.crearUsuario(usuario);
     }
 
@@ -57,11 +57,11 @@ public class UsuarioControlador {
 
     @PutMapping("/editarUsuario/{id}")
     public Usuario editarUsuario( @PathVariable("id") int id , @RequestBody Usuario usuario){
-        Carro carro = usuario.getCarroid();
-        this.carroServices.editarRegistroCarro(carro, carro.getId());
+        // Carro carro = usuario.getCarroid();
+        // this.carroServices.editarRegistroCarro(carro, carro.getId());
 
-        Factura factura = usuario.getFacturaid();
-        this.facturaServices.editarFactura(factura, factura.getId());
+        //  Factura factura = usuario.getFacturaid();
+        //   this.facturaServices.editarFactura(factura, factura.getId());
 
         return this.usuarioServices.editarUsuario(usuario,id);
     }

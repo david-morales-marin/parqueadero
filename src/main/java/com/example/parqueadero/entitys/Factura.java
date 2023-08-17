@@ -1,9 +1,10 @@
 package com.example.parqueadero.entitys;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.io.Serializable;
 
+@Entity
 @Table(name = "Facturas")
 public class Factura implements Serializable {
 
@@ -23,26 +24,26 @@ public class Factura implements Serializable {
     @Column(name = "Descuento")
     private double descuento;
 
-    @Column(name = " Usuario_id")
-    @OneToOne
-    private Usuario usuarioid;
+   // @Column(name = " Usuario_id")
+   // @OneToOne
+    //  private Usuario usuarioid;
 
-    @Column(name = "Carro_id")
-    @OneToOne
-    private Carro carroid;
+   // @Column(name = "Carro_id")
+   // @OneToOne
+    // private Carro carroid;
 
     public Factura() {
 
     }
 
-    public Factura(Integer id, Integer numeroFactura, double horaParqueo, double totalPagar, double descuento, Usuario usuarioid, Carro carroid) {
+    public Factura(Integer id, Integer numeroFactura, double horaParqueo, double totalPagar, double descuento) {
         this.id = id;
         this.numeroFactura = numeroFactura;
         this.horaParqueo = horaParqueo;
         this.totalPagar = totalPagar;
         this.descuento = descuento;
-        this.usuarioid = usuarioid;
-        this.carroid = carroid;
+        //   this.usuarioid = usuarioid;
+        //   this.carroid = carroid;
     }
 
     public Integer getId() {
@@ -85,7 +86,7 @@ public class Factura implements Serializable {
         this.descuento = descuento;
     }
 
-    public Usuario getUsuarioid() {
+  /*  public Usuario getUsuarioid() {
         return usuarioid;
     }
 
@@ -99,5 +100,5 @@ public class Factura implements Serializable {
 
     public void setCarroid(Carro carroid) {
         this.carroid = carroid;
-    }
+    }  */
 }

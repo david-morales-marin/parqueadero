@@ -43,7 +43,7 @@ public class FacturaServices {
             factura1.setNumeroFactura(
                     factura.getNumeroFactura());
         }
-        if (Objects.nonNull(
+     /*   if (Objects.nonNull(
                 factura.getUsuarioid())
                 && !"".equalsIgnoreCase(
                 factura.getUsuarioid().toString())) {
@@ -56,7 +56,7 @@ public class FacturaServices {
                         factura.getCarroid().toString())) {
             factura1.setCarroid(
                     factura.getCarroid());
-        }
+        } */
         if(Objects.nonNull(
                 factura.getDescuento())
      /*   && !"".equalsIgnoreCase(

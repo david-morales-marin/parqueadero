@@ -1,13 +1,19 @@
 package com.example.parqueadero.services;
 
 import com.example.parqueadero.entitys.Usuario;
+import com.example.parqueadero.excepciones.ApiRequestException;
 import com.example.parqueadero.repositorys.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.ServiceLoader;
+
+import static java.util.Arrays.stream;
+import static java.util.Locale.filter;
 
 @Service
 public class UsuarioServices {
@@ -22,11 +28,23 @@ public class UsuarioServices {
         return this.usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> obtenerUsuarioXCedula(int cedula) {
+    public int obtenerUsuarioXCedula(int cedula) {
 
-
-            return this.usuarioRepository.findByCedula(cedula);
+     /*   if(usuarioRepository.findByCedula(cedula).get() == null ){
+            throw new ApiRequestException("No se encontro un usuario con cedula" , 404 );
+        } */
+        // return
+                    usuarioRepository.findByCedula(cedula)
+                   .stream()
+                   .filter(p -> p.getCedula().equals(cedula))
+                   .findFirst();
+                if(usuarioRepository.existsByCedula(cedula) == false ){
+                     //   usuarioRepository.findByCedula(cedula).get() == null){
+                    throw new ApiRequestException("No se encontro un usuario con cedula" , 404 );
+                }
+             return usuarioRepository.findByCedula(cedula).get().getCedula();
     }
+
     public Usuario crearUsuario(Usuario nuevoUsuario){
             return this.usuarioRepository.save(nuevoUsuario);
 
@@ -50,7 +68,7 @@ public class UsuarioServices {
             usuario1.setApellido(
                     usuario.getApellido());
         }
-        if(Objects.nonNull(
+       /* if(Objects.nonNull(
                 usuario.getCarroid())
         && !"".equalsIgnoreCase(
                 usuario.getCarroid().toString())){
@@ -63,7 +81,7 @@ public class UsuarioServices {
                 usuario.getFacturaid().toString())){
             usuario1.setFacturaid(
                     usuario.getFacturaid());
-        }
+        } */
         if(Objects.nonNull(
                 usuario.getCedula())
         && !"".equalsIgnoreCase(

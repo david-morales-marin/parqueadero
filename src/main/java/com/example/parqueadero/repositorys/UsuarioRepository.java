@@ -12,4 +12,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario , Integer> {
    // List<Usuario> getUsuarioByCedula(int cedula);
 
     Optional<Usuario> findByCedula(int cedula);
+
+    public Boolean existsByCedula(int cedula);
+
+
 }

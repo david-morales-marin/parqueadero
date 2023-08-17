@@ -19,11 +19,11 @@ public class CarroControlador {
     @Autowired
     public CarroServices carroServices;
 
-    @Autowired
-    public FacturaServices facturaServices;
+    // @Autowired
+    // public FacturaServices facturaServices;
 
-    @Autowired
-    public UsuarioServices usuarioServices;
+    //  @Autowired
+    // public UsuarioServices usuarioServices;
 
     public CarroControlador(CarroServices carroServices) {
         this.carroServices = carroServices;
@@ -41,8 +41,8 @@ public class CarroControlador {
 
     @PostMapping("/RegistrarCarro")
     public Carro RegistrarCarro(@RequestBody Carro carro){
-        this.facturaServices.crearFactura(carro.getFacturaid());
-        this.usuarioServices.crearUsuario(carro.getUsuarioid());
+        //    this.facturaServices.crearFactura(carro.getFacturaid());
+        //    this.usuarioServices.crearUsuario(carro.getUsuarioid());
         return this.carroServices.crearRegistroCarro(carro);
     }
 
@@ -55,11 +55,11 @@ public class CarroControlador {
     @PutMapping("/actualizarCarro/{id}")
     public Carro actualizarRegistroCarro(@PathVariable("id") int id, @RequestBody Carro carro){
 
-        Factura factura = carro.getFacturaid();
-        this.facturaServices.editarFactura(factura , factura.getId());
+        //   Factura factura = carro.getFacturaid();
+        //  this.facturaServices.editarFactura(factura , factura.getId());
 
-        Usuario usuario = carro.getUsuarioid();
-        this.usuarioServices.editarUsuario(usuario , usuario.getId());
+        //  Usuario usuario = carro.getUsuarioid();
+        //  this.usuarioServices.editarUsuario(usuario , usuario.getId());
 
         return this.carroServices.editarRegistroCarro(carro,id);
     }

@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableJpaRepositories("com.example.parqueadero")
-@EntityScan("com.example.parqueadero")
+@EnableJpaRepositories("com.example.parqueadero.repositorys")
+@EntityScan("com.example.parqueadero.entitys")
 public class ParqueaderoApplication {
 
 	public static void main(String[] args) {
